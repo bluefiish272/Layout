@@ -1,0 +1,52 @@
+﻿@model Dictionary<int, string>
+@{
+    ViewData["Title"] = "聯絡我們";
+}
+
+<div class="base-container">
+    <div class="contact-container form-left">
+        <partial name="_ContactForm" />
+    </div>
+</div>
+
+<div class="base-container">
+    <div class="contact-container form-center">
+        <partial name="_ContactForm" />
+    </div>
+</div>
+
+<div class="base-container">
+    <div class="contact-container form-right">
+        <partial name="_ContactForm" />
+    </div>
+</div>
+<div id="contact-dialog" title="聯絡我們">
+    <div class="contact-container form-center" style="width:100%;">
+        <partial name="_ContactForm" />
+    </div>
+</div>
+<button id="contactUsBtn">聯絡我們</button>
+
+<hr />
+
+@section Scripts{
+    <script>
+        $(function () {
+            $("#contact-dialog").dialog({
+                autoOpen: false,
+                width: ($('body').outerWidth()) * 80 / 100,//(
+                show: {
+                    effect: "blind",
+                    duration: 500
+                },
+                hide: {
+                    effect: "fade",
+                    duration: 500
+                }
+            });
+            $('#contactUsBtn').on("click", function () {
+                $('#contact-dialog').dialog('open');
+            })
+        })
+    </script>
+}

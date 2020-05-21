@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Management</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <div class="header-top"></div>
+        <partial name="_Navigation" />
+        <div class="header-bottom"></div>
+    </header>
+    @RenderBody()
+    <footer class="border-top footer text-muted">
+        <div class="function-container">
+            <div class="func-item">
+                <a asp-controller="News" asp-action="Index" class="btn active" role="button" aria-pressed="true">📢</a>
+            </div>
+            <div class="func-item">
+                <a asp-controller="Home" asp-action="Favorite" class="btn active" role="button" aria-pressed="true">❤️</a>
+            </div>
+            <div class="func-item">
+                <a asp-controller="Teams" asp-action="Index" class="btn active" role="button" aria-pressed="true">🏠</a>
+            </div>
+            <div class="func-item">
+                <a asp-controller="Setting" asp-action="Index" class="btn active" role="button" aria-pressed="true">⚙️</a>
+            </div>
+            <div class="func-item">
+                <a asp-controller="Home" asp-action="Contact" class="btn active" role="button" aria-pressed="true">聯繫</a>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

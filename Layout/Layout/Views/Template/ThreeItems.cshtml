@@ -1,0 +1,19 @@
+﻿@model List<Product>
+@{
+    Layout = null;
+}
+
+<div class="multiple-block">
+    @for (int i = 0; i < 3; i++)
+    {
+        <div class="in-block-three">
+            <div class="content img-block">
+                <img src="@Url.Content(Model[i].ImagePath)" />
+            </div>
+            <div class="sub-title">
+                <div>@($"{Model[i].ID}-{Model[i].Name}")</div>
+                <div>@Model[i].Description</div>
+            </div>
+        </div>
+    }
+</div>

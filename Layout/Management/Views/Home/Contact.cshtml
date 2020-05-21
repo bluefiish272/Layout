@@ -1,0 +1,37 @@
+﻿@model ValueTuple<List<Team>>
+@{
+    var teams = Model.Item1;
+    ViewData["Title"] = "Home";
+}
+
+<div class="base-container">
+    <form id="loginForm" class="base-form-border" asp-controller="Login" asp-action="Login">
+        <div class="text-center">若您對這個產品有任何想法，請聯繫我們</div>
+        <hr />
+        <div class="form-group row">
+            <label for="contactName" class="col-4 col-form-label">姓名</label>
+            <div class="col-6">
+                <input type="text" class="form-control" id="Contact.Name" placeholder="王大明">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="contactPhoneNo" class="col-4 col-form-label">電話</label>
+            <div class="col-6">
+                <input type="text" class="form-control" id="Contact.PhoneNo" placeholder="02-1235678">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="contactMail" class="col-4 col-form-label">E-mail</label>
+            <div class="col-6">
+                <input type="text" class="form-control" id="Contact.MailAddress" placeholder="WangDaMing@@aaa.com.tw">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="contactContent" class="col-4 col-form-label">聯絡訊息</label>
+            <textarea class="form-control col-6" id="Contact.Content" rows="3"></textarea>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">送出</button>
+        </div>
+    </form>
+</div>

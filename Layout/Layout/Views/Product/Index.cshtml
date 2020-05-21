@@ -1,0 +1,21 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "產品介紹";
+}
+@*副標題的地方CSS需要再調整，文字兩行div會跑出邊界*@
+<div class="base-container">
+    <div class="multiple-block">
+        @foreach (var item in Model)
+        {
+            <div class="in-block-three">
+                <div class="content img-block">
+                    <img src="@Url.Content(item.ImagePath)" />
+                </div>
+                <div class="sub-title">
+                    <div>@($"{item.ID}-{item.Name}")</div>
+                    <div>@item.Description</div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

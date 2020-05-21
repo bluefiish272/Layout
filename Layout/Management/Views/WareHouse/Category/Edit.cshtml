@@ -1,0 +1,64 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "編輯類別";
+}
+
+    <form id="categoriesEditForm" class="warehouse-form base-form-border" asp-action="Update">
+        <div class="text-center">類別資訊</div>
+        <hr />
+        <div class="form-group row">
+            <label for="categoryCode" class="col-3 col-form-label text-center">UID</label>
+            <div class="col-8">
+                <input type="text" class="form-control-plaintext" readonly id="Category.Code" name="Category.UID" value="@Model.UID">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="categoryCode" class="col-3 col-form-label text-center">編碼</label>
+            <div class="col-8">
+                <input type="text" class="form-control" id="Category.Code" name="Category.Code" value="@Model.Code">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="categoryName" class="col-3 col-form-label text-center">名稱</label>
+            <div class="col-8">
+                <input type="text" class="form-control" id="Category.Name" name="Category.Name" value="@Model.Name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="contactDescription" class="col-3 col-form-label text-center">描述</label>
+            <textarea class="form-control col-8" id="Category.Description" name="Category.Description" rows="1">@Model.Description</textarea>
+        </div>
+        <div class="form-group row">
+            <label for="contactActivation" class="col-3 col-form-label text-center">啟用狀態</label>
+            <div class="col-8">
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="Category.Activation" id="contactActivation1" value="true" checked="@(Model.Activation == true)">
+                    <label class="form-check-label" for="inlineRadio1">啟用</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="Category.Activation" id="contactActivation2" value="false" checked="@(Model.Activation == false)">
+                    <label class="form-check-label" for="inlineRadio2">停用</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="categoryCode" class="col-3 col-form-label text-center">建立人員</label>
+            <div class="col-8">@Model.Creator</div>
+        </div>
+        <div class="form-group row">
+            <label for="categoryCode" class="col-3 col-form-label text-center">建立日期</label>
+            <div class="col-8">@Model.CreateDate.ToString("yyyy-MM-dd")</div>
+        </div>
+        <div class="form-group row">
+            <label for="categoryCode" class="col-3 col-form-label text-center">最後更新人員</label>
+            <div class="col-8">@Model.LastUpdator</div>
+        </div>
+        <div class="form-group row">
+            <label for="categoryCode" class="col-3 col-form-label text-center">最後更新日期</label>
+            <div class="col-8">@Model.LastUpdateDate.ToString("yyyy-MM-dd")</div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">更新</button>
+            <a class="btn btn-primary" href="@Url.Action("Index","Category")">返回</a>
+        </div>
+    </form>

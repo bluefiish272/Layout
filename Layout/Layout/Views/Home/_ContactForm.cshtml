@@ -1,0 +1,46 @@
+﻿@model string
+@{
+    Layout = null;
+}
+    <div class="contact-form">
+        <div>請填寫下列聯絡表單，我們將儘快回覆您的問題。</div>
+        <hr />
+        <form>
+            <div class="form-group row">
+                <label for="contactName" class="col-4 col-form-label">姓名</label>
+                <div class="col-6">
+                    <input type="text" class="form-control" id="Contact.Name" placeholder="王大明">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="contactJobTitle" class="col-4 col-form-label">職稱</label>
+                <div class="col-6">
+                    <input type="text" class="form-control" id="Contact.JobTitle" placeholder="業務經理">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="contactCompanyName" class="col-4 col-form-label">企業寶號</label>
+                <div class="col-6">
+                    <input type="text" class="form-control" id="Contact.CompanyName" placeholder="有實力有限公司">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="contactPhoneNo" class="col-4 col-form-label">電話</label>
+                <div class="col-6">
+                    <input type="text" class="form-control" id="Contact.PhoneNo" placeholder="02-1235678">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="contactMail" class="col-4 col-form-label">E-mail</label>
+                <div class="col-6">
+                    <input type="text" class="form-control" id="Contact.MailAddress" placeholder="WangDaMing@@aaa.com.tw">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="contactContent" class="col-4 col-form-label">聯絡訊息</label>
+                <textarea class="form-control col-6" id="Contact.Content" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">送出</button>
+        </form>
+
+    </div>

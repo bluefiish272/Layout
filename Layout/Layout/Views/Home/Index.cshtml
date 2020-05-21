@@ -1,0 +1,161 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*Slide*@
+<partial name="_Slide" model="new List<string>()" />
+
+<div style="height:30px;">
+    &nbsp;
+</div>
+
+@*一行三張圖*@
+<partial name="_ThreeImage" />
+
+@*圖文各半*@
+@{
+    var modelForTemplate = new TemplateMap()
+    {
+        Type = TemplateType.SpaceImageAndText,
+        PartialViewName = "../Template/_Introduction_Space",
+        Text = @"《鋼彈系列》為富野由悠季自1979年所製作機動戰士鋼彈一作所派生出來的一連串續作、外傳及其他系列的總稱。
+                    ガンダム在中國大陸一般譯為高達或敢達、港澳譯為高達，臺灣譯為鋼彈。
+                    這個由日本動畫公司日昇之下製作的系列SF動畫作品，對以日本為首的世界全球次文化界產生重大的影響。",
+        ImagePath = "~/image/f3106968b6a2455e0409b3db5919fc8a.jpg"
+    };
+}
+<div style="height:20px;">
+    &nbsp;
+</div>
+<partial name="../Template/_Introduction_Space" model="modelForTemplate" />
+<div style="height:20px;">
+    &nbsp;
+</div>
+@*Tabs*@
+@{
+    List<Tabs> tabs = new List<Tabs>()
+    {
+        new Tabs()
+        {
+            Title = "狼人",
+            Content = "每晚將殺死一個平民。可以選擇不殺人，當晚為平安夜。狼人可以在白天的任何時候選擇自爆，自爆後該名狼人離場，沒有遺言，其他玩家立即結束髮言，遊戲跳過投票階段，直接進入黑夜。"
+        },
+        new Tabs()
+        {
+            Title = "騎士",
+            Content = "可在白天自身發言時，查驗任何一位玩家的所屬陣營。若查驗到該玩家為邪惡陣營，該玩家即遭到淘汰並進入夜晚；若查驗到該玩家為正義聯盟，騎士則需以死謝罪並維持原本白天狀態，下位玩家繼續發言或進行投票。騎士使用技能時必須公布底牌。不論查驗結果為何，技能僅可在整局使用一次。"
+        }
+        ,
+        new Tabs()
+        {
+            Title = "女巫",
+            Content = "可在夜晚睜眼時，拯救被邪惡陣營殺死的玩家，或毒殺任何一位玩家，可以選擇該輪不救或不毒。女巫僅在尚未使用解藥時才看得到該晚邪惡陣營殺人資訊；拯救與毒殺僅各有一次機會，且不可同時使用；女巫只有第一晚可以自救。"
+        }
+        ,
+        new Tabs()
+        {
+            Title = "預言家",
+            Content = "可在夜晚睜眼時，查驗任何一位玩家的所屬陣營，但不可查驗已死的玩家，也可以選擇該晚不發動技能，即該晚不查驗任何人。"
+        }
+        ,
+        new Tabs()
+        {
+            Title = "獵人",
+            Content = "可在死亡時帶走（射殺）任何一位玩家（被女巫毒殺以及與狼美人殉情時除外），可選擇不發動技能；但在獵人局中，獵人則不可不發動技能。"
+        }
+    };
+}
+<partial name="TopTabs" model="tabs" />
+<div style="height:20px;">
+     &nbsp;
+</div>
+<partial name="LeftTabs" model="tabs" />
+<div style="height:20px;">
+    &nbsp;
+</div>
+@*九宮格*@
+<partial name="_NineImage" />
+<div style="height:20px;">
+    &nbsp;
+</div>
+@section Scripts{
+    <script>
+        $(function () {
+            tabsInitial();
+
+            initialSlide();
+            //setFunctionBlock($('.slide-item').eq(0).text());
+            function initialSlide() {
+                $('.slide-item').eq(0).show();
+                $('.slide-circle').eq(0).addClass('active');
+            }
+
+            $(document).on('click', '.preview-block', function () {
+                playSlide(false);
+            })
+
+            $(document).on('click', '.next-block', function () {
+                playSlide(true);
+            })
+
+            function playSlide(next) {
+                var activeIndex = getActiveItemIndex();
+                var totalItem = $('.slide-item').length;
+                var isLastItem = (activeIndex == (totalItem - 1));
+                var isFirstItem = (activeIndex == 0);
+                $('.slide-item').hide();
+                $('.slide-circle').removeClass('active');
+                if (next) {
+                    if (isLastItem) {
+                        $('.slide-item').eq(0).show();
+                        $('.slide-circle').eq(0).addClass('active');
+                    }
+                    else {
+                        $('.slide-item').eq(activeIndex + 1).show();
+                        $('.slide-circle').eq(activeIndex + 1).addClass('active');
+                    }
+                }
+                else {
+                    if (isFirstItem) {
+                        $('.slide-item').eq(totalItem - 1).show();
+                        $('.slide-circle').eq(totalItem - 1).addClass('active');
+
+                    }
+                    else {
+                        $('.slide-item').eq(activeIndex - 1).show();
+                        $('.slide-circle').eq(activeIndex - 1).addClass('active');
+                    }
+                }
+                //setFunctionBlock($('.slide-item[style*="display: block"]').text());
+
+                function getActiveItemIndex() {
+                    return $('.slide-item[style*="display: block"]').index('.slide-item');
+                }
+            }
+
+            function setFunctionBlock(key) {
+                var $funcBlocks = $('.function-block');
+                var functionList = getFunctionList(key);
+                for (var i = 0; i < $funcBlocks.length; i++) {
+                    var $thisBlock = $funcBlocks.eq(i);
+                    $thisBlock.text(functionList[i]);
+                }
+
+                function getFunctionList(key) {
+                    var result = [];
+                    var map =
+                        [
+                            { "倉庫管理": ["調撥單", "料號管理", "庫存查詢"] },
+                            { "團隊管理": ["團隊資訊", "人員管理", "形象網頁"] }
+                        ];
+                    for (var i = 0; i < map.length; i++) {
+                        if (Object.keys(map[i]) == key) {
+                            result = map[i][key];
+                            return result;
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+}

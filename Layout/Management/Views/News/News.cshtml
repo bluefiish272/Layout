@@ -1,0 +1,31 @@
+﻿@model News
+@{
+    ViewData["Title"] = "最新消息";
+}
+
+<div class="base-container">
+    <div class="news-container">
+        <form id="newsForm" class="base-form-border">
+            <div class="text-center">@Model.Title</div>
+            <hr />
+            <div class="form-group row">
+                <label for="newsCreateDate" class="col-3 col-form-label text-center">建立日期</label>
+                <div class="col-8">
+                    <input type="text" readonly class="form-control-plaintext" asp-for="@Model.CreateDate" value="@Model.CreateDate.ToString("yyyy/MM/dd")">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="newsTitle" class="col-3 col-form-label text-center">內容</label>
+                <div class="col-8">
+                    <input type="text" readonly class="form-control-plaintext" asp-for="@Model.Content">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="newsTitle" class="col-3 col-form-label text-center">建立者</label>
+                <div class="col-8">
+                    <input type="text" readonly class="form-control-plaintext" asp-for="@Model.Creator">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

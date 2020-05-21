@@ -1,0 +1,577 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-family: Arial,"微軟正黑體","Microsoft JhengHei","新細明體", sans-serif;
+    font-size: 14px;
+}
+
+/*@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}*/
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    font-family: Arial,"微軟正黑體","Microsoft JhengHei","新細明體", sans-serif;
+    font-size: 14px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.header-top {
+    position: static;
+    height: 90px;
+}
+.header-bottom {
+    position: static;
+    height: 20px;
+}
+
+header .navbar-container {
+    position: fixed;
+    right: 0;
+    left: 0;
+    height: 100px;
+    border-bottom: solid 2.5px #4d4d4d;
+    background-color: #ffffff;
+}
+
+header .nav-block {
+    height: 100%;
+    margin: 0 17%;
+    padding-top: 45px;
+}
+
+.nav-brand-block {
+    display: inline-block;
+    width:18%;
+}
+.navbar-container .nav-brand-icon {
+    height: 50px;
+}
+.nav-item-list {
+    display: inline-block;
+    width: 75%;
+}
+.nav-menu-btn {
+    display: inline-block;
+    width: 5%;
+}
+/*覆寫bootstrap*/
+.navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: solid 1.5px #aba7a7;
+    border-radius: 0.25rem;
+}
+.navbar-light .navbar-toggler {
+    color: rgba(0, 0, 0, 0.5);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+/*覆寫bootstrap*/
+
+
+.base-container {
+    margin: 10px auto;
+    width: 100%;
+    height: 500px;
+    /*background-color: #9c9a9a;
+    border-style: solid;
+    border-width: 2px;*/
+}
+
+.slide-container {
+    margin: 0 auto;
+    width: 100%;
+    height: 500px;
+    background-color: lightblue;
+}
+
+.slide-top {
+    height: 500px;
+    /*border-style: solid;
+    border-width: 1px;
+    border-color: dodgerblue;*/
+}
+
+.slide-bottom {
+    height: 40px;
+    /*border-style: solid;
+    border-width: 1px;
+    border-color: forestgreen;*/
+}
+
+.slide-content {
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    padding: 35px 0;
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    /*border-style: solid;
+    border-width: 1px;
+    border-color: orangered;*/
+}
+.slide-item {
+    display: none;
+    width: 100%;
+    height: 110px;
+    margin: 0 auto;
+    /*border-style: solid;
+    border-width: 1px;
+    border-color: orangered;*/
+}
+.slide-arrow {
+    position: relative;
+    z-index: 100;
+    width: 5%;
+    height: 500px;
+    margin-top: -540px;
+    text-align: center;
+    /*border-style: dotted;
+    border-width: 2px;
+    border-color: orange;*/
+}
+
+.arrow-icon{
+    margin:205px auto;
+    width:15px;
+}
+
+.preview-block {
+    float: left;
+}
+
+.next-block {
+    float: right;
+}
+
+.slide-circle.active{
+    color:cornflowerblue;
+}
+
+.introduction-container {
+    margin: 10px auto;
+    width: 100%;
+    /*background-color: #9c9a9a;
+    border-style: solid;
+    border-width: 2px;*/
+}
+
+.in-block-two {
+    display: inline-block;
+    margin: 0 auto;
+    width: 49%;
+    height: 100%;
+    /*background-color: #ffd800;
+    border-style: dashed;
+    border-width: 1px;*/
+}
+
+.padding-left-20{
+    padding-left:20%;
+}
+.padding-right-20 {
+    padding-right: 20%;
+}
+
+.content {
+    display: block;
+    height: 83%;
+    /*background-color: #ff6a00;
+    border-style: dotted;
+    border-width: 1px;
+    border-color: brown;*/
+}
+
+.img-block {
+    display: block;
+}
+    .img-block img {
+        display: block;
+        margin: auto;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+.text-block {
+    font-size: 20px;
+}
+
+.sub-title {
+    height: 17%;
+    margin: auto;
+    text-align: center;
+    vertical-align: bottom;
+    font-size: 34px;
+    font-weight: 600;
+    color: dimgray;
+    /*background-color: #91dfeb;
+    border-style: dotted;
+    border-width: 2px;
+    border-color: red;*/
+}
+
+.multiple-block {
+    margin: 0 18%;
+    height: 100%;
+}
+
+.in-block-three {
+    /*float: left;*/
+    display: inline-block;
+    margin: 0.25% 1.5%;
+    width: 30%;
+    height: 41%;
+    /*background-color: #ffd800;*/
+    border-style: dashed;
+    border-width: 1px;
+    border-color: darkgreen;
+}
+    .in-block-three .text-block,
+    .in-block-three .sub-title {
+        font-size: 14px;
+    }
+
+.tabs-container {
+    width: 60%;
+    height: auto;
+    margin: 10px 20%;
+    background-color: transparent;
+    /*border-style: dotted;
+    border-width: 2px;
+    border-color: red;*/
+}
+ 
+.tabs-container .content {
+    padding: 25px 35px;
+}
+    .tabs-container nav {
+        background-color: #ebebeb;
+    }
+    .tabs-container .tab-content {
+        background-color: #c9e7f2;
+    }
+    .tabs-container a {
+        color: #4d4d4d;
+    }
+    .tabs-container .text-block{
+        font-size: 14px;
+    }
+    .tabs-container .left-tab-row {
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    .tabs-container .left-tab-title {
+        width: 20%;
+        background-color: #ebebeb;
+    }
+    .tabs-container .left-tab-content {
+        width: 80%;
+        background-color: #c9e7f2;
+    }
+    /* 覆寫bootstrap的nav tabs */
+    .tabs-container .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+        border-color: darkblue darkblue darkblue;
+        /*border-color: #e9ecef #e9ecef #dee2e6;*/
+    }
+
+    .tabs-container .nav-tabs .nav-link {
+        border: 1px solid transparent;
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+        background-color: #ebebeb;
+    }
+    .tabs-container .nav-tabs .nav-link.disabled {
+        color: #ebebeb;
+        background-color: transparent;
+        border-color: transparent;
+    }
+
+        .tabs-container .nav-tabs .nav-link.active,
+        .tabs-container .nav-tabs .nav-item.show .nav-link {
+            color: #2f55ad;
+            font-weight: 600;
+            background-color: #c9e7f2;
+            border-color: lightblue lightblue transparent;
+        }
+
+    .tabs-container .nav-pills .nav-link.active,
+    .tabs-container .nav-pills .show > .nav-link {
+        color: #2f55ad;
+        background-color: #c9e7f2;
+        border-color: lightblue lightblue transparent;
+    }
+/* 覆寫bootstrap的nav tabs */
+
+.contact-container {
+    width: 45%;
+    margin: 10px auto;
+    text-align: center;
+    background-color: #f2f1ed;
+    /*border-style: dotted;
+    border-width: 2px;
+    border-color: red;*/
+}
+    .contact-container.form-center {
+        margin: 10px auto;
+    }
+    .contact-container.form-right {
+        float:right;
+    }
+    .contact-container.form-left {
+        float: left;
+    }
+
+.accordion-item {
+    margin: 0 20% 10px 20%;
+    border-radius: 10px;
+    border-style: dashed;
+    border-color: darkcyan;
+    border-width: 2px;
+}
+
+    .accordion-item .accordion-title {
+        font-size: 20px;
+        color: orangered;
+    }
+        .accordion-title span.title-text::before {
+            content: "→";
+            color: forestgreen;
+        }
+        .accordion-title span.title-text.show-icon::before {
+            content: "↓";
+            color: darkmagenta ;
+        }
+        .accordion-item .accordion-content {
+            display:none;
+            padding: 15px 30px;
+        }
+
+    .footer {
+        position: absolute;
+        display: none;
+        bottom: 0;
+        width: 100%;
+        white-space: nowrap;
+        line-height: 60px; /* Vertically center the text there */
+        background-color: #ffffff;
+    }
+
+@media screen and (max-width:1024px) {
+    header .nav-block {
+        margin: 0 10%;
+        padding-top: 45px;
+    }
+    .tabs-container {
+        width: 76%;
+        margin: 0 12%;
+    }
+    .slide-content {
+        margin: 0 3px;
+    }
+    .multiple-block {
+        margin: 0 5%;
+    }
+    .in-block-three {
+        margin: 0.25% 1.5%;
+        width: 30%;
+        height: 41%;
+    }
+}
+
+@media screen and (max-width:812px) {
+    body,
+    .tabs-container .text-block,
+    .in-block-three .sub-title {
+        font-size: 13px;
+    }
+    .in-block-two .text-block,
+    .accordion-item .accordion-title {
+        font-size: 16px;
+    }
+    .header-top {
+        height: 60px;
+    }
+    .header-bottom {
+        height: 10px;
+    }
+    header .navbar-container {
+        height: 60px;
+        border-bottom: solid 2.5px #4d4d4d;
+        background-color: #ffffff;
+    }
+    header .nav-block {
+        margin: 0 5%;
+        padding-top: 15px;
+    }
+    .nav-brand-block {
+        display: inline-block;
+        width: 13%;
+    }
+    .navbar-container .nav-brand-icon {
+        height: 35px;
+    }
+    .tabs-container {
+        width: 90%;
+        height: 100%;
+        margin: 0 5%;
+        background-color: #f2f1ed;
+    }
+    .multiple-block {
+        margin: 0 3%;
+    }
+    .in-block-three {
+        margin: 0.25% 1%;
+        width: 30%;
+        height: 41%;
+    }
+    .contact-container {
+        width: 60%;
+        margin: 10px auto;
+        text-align: center;
+        background-color: #f2f1ed;
+    }
+    .accordion-item {
+        margin: 0 10% 7px 10%;
+    }
+    .accordion-item .accordion-content {
+        padding: 5px 10px;
+    }
+}
+/* iphone6/7/8 plus-橫放*/
+@media screen and (max-width:736px) {
+    .navbar-container .nav-brand-icon {
+        /*content: url("/image/Logo.png");*/
+    }
+    .nav-menu-btn {
+        position: absolute;
+        right: 50px;
+        top: 15px;
+    }
+    .nav-item-list {
+        display: none;
+        margin-top: 10px;
+        background: lightgray;
+    }
+}
+
+@media screen and (max-width:414px) {
+    body,
+    .tabs-container .text-block,
+    .in-block-three .sub-title {
+        font-size: 11px;
+    }
+    .in-block-two .text-block {
+        font-size: 13px;
+    }
+    .navbar-container .nav-brand-icon {
+        height: 35px;
+    }
+    .nav-menu-btn {
+        right: 70px;
+    }
+    .base-container{
+        height:250px;
+    }
+    .tabs-container .left-tab-title {
+        width: 25%;
+    }
+    .tabs-container .left-tab-content {
+        width: 75%;
+    }
+    .tabs-container .content {
+        padding: 20px 25px;
+    }
+    .in-block-two .text-block{
+        padding-right:20px;
+    }
+    .multiple-block {
+        margin: 0 3%;
+    }
+    .in-block-three {
+        margin: 0.25% 1%;
+        width: 47%;
+        height: 41%;
+    }
+    .contact-container {
+        width: 90%;
+        margin: 10px auto;
+        text-align: center;
+        background-color: #f2f1ed;
+        float: none;
+    }
+        .contact-container.form-right,
+        .contact-container.form-left {
+            float: none;
+        }
+    .accordion-item {
+        margin: 0 5% 7px 5%;
+    }
+    .accordion-item .accordion-content {
+        padding: 5px 7px;
+    }
+}

@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+    List<Product> temp = new List<Product>()
+    {
+        new Product()
+            {
+                ID = "AB12345",
+                Name = "鋼彈一號",
+                Category = "A",
+                Description = "要不要買阿!",
+                ImagePath = "~/image/dc2051aa1903397db7388c47d3a91316.jpg"
+            },
+            new Product()
+            {
+                ID = "AB10523",
+                Name = "沙漠用薩克",
+                Category = "C",
+                Description = "督嚕督嚕督嚕!",
+                ImagePath = "~/image/9fdd8336895db58e54e6c066d6c3f68e.jpg"
+            },
+                new Product()
+            {
+                ID = "AB31522",
+                Name = "鋼彈三號",
+                Category = "B",
+                Description = "帥嗎? 點我購買",
+                ImagePath = "~/image/e36dfe617c5479e4c38ec416ec3f4a39.jpg"
+            }
+    };
+}
+
+<div class="base-container">
+    <div class="multiple-block">
+        @for (int i = 0; i < 3; i++)
+        {
+            <div class="in-block-three">
+                <div class="content img-block">
+                    <img src="@Url.Content(temp[i].ImagePath)" />
+                </div>
+                <div class="sub-title">
+                    <div>@($"{temp[i].ID}-{temp[i].Name}")</div>
+                    <div>@temp[i].Description</div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

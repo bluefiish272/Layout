@@ -1,0 +1,17 @@
+﻿@model List<News>
+@{
+    ViewData["Title"] = "最新消息";
+}
+
+<div class="base-container">
+    <div class="news-container">
+        @foreach (var item in Model)
+        {
+            <div class="news-item">
+                <div class="news-title">
+                    <a href="@Url.Action("News","News", new { id = item.Id})" class="team-name">@($"{item.CreateDate:yyyy/MM/dd}-{item.Title}")</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

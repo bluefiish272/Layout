@@ -1,0 +1,31 @@
+﻿@*@model List<Module>*@
+@model List<string> 
+@{
+    Layout = null;
+}
+<div class="slide-container" style="background-color: #9c9a9a;">
+    <div class="slide-top">
+        <div class="slide-content">
+            @{ var index = 0;}
+            @foreach (var item in Model)
+            {
+                <div id="@($"slideItem-{index}")" class="slide-item text-center" data-circle-id="@($"slideCircle-{index}")">@item</div>
+                index++;
+            }
+        </div>
+    </div>
+    <div class="slide-bottom">
+        <div class="text-center">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <span id="@($"slideCircle-{i}")" class="slide-circle">●</span>
+            }
+        </div>
+    </div>
+    <div class="slide-arrow preview-block">
+        <img class="arrow-icon preview-btn" src="@Url.Content("~/image/slide-bt-prev.png")" />
+    </div>
+    <div class="slide-arrow next-block">
+        <img class="arrow-icon next-btn" src="@Url.Content("~/image/slide-bt-next.png")" />
+    </div>
+</div>

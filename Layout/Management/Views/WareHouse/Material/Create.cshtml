@@ -1,0 +1,65 @@
+﻿@model Material
+@{
+    ViewData["Title"] = "新增料件";
+    var categories = Core.Helper.FakeDataHelper.GetCategories();
+    var selectLists = new List<SelectListItem>();
+    foreach (var item in categories)
+    {
+        var SelectListItem = new SelectListItem()
+        {
+            Text = $"{item.Code}-{item.Name}",
+            Value = item.UID.ToString()
+        };
+        selectLists.Add(SelectListItem);
+    }
+}
+
+    <form id="materialsCreateForm" class="warehouse-form base-form-border" asp-action="Add">
+        <div class="text-center">料件資訊</div>
+        <hr />
+        <div class="form-group row">
+            <label for="categoryCode" class="col-3 col-form-label text-center">類別</label>
+            <div class="col-8">
+                <select class="form-control" id="Material.CategoryUid" name="Material.CategoryUid" asp-items="@selectLists"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="materialProperty" class="col-3 col-form-label text-center">屬性</label>
+            <div class="col-8">
+                @foreach (var p in System.Enum.GetValues(typeof(Property)))
+                {
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" name="Material.Property" id="property1" value="@((int)p)">
+                        <label class="form-check-label" for="propertyRadio1">@EnumsHelper.GetName((Property)p)</label>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="materialNumber" class="col-3 col-form-label text-center">料號</label>
+            <div class="col-8">
+                <input type="text" class="form-control" id="Material.Name" name="Material.Number">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="materialName" class="col-3 col-form-label text-center">名稱</label>
+            <div class="col-8">
+                <input type="text" class="form-control" id="Material.Name" name="Material.Name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="materialSpecification" class="col-3 col-form-label text-center">規格</label>
+            <div class="col-8">
+                <input type="text" class="form-control" id="Material.Specification" name="Material.Specification">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="materialDescription" class="col-3 col-form-label text-center">描述</label>
+            <textarea class="form-control col-8" id="Material.Description" name="Material.Description" rows="1"></textarea>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">建立</button>
+            <a class="btn btn-primary" href="@Url.Action("Index","Material")">返回</a>
+        </div>
+    </form>

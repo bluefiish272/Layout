@@ -1,0 +1,110 @@
+﻿@model Team
+@{
+    ViewData["Title"] = "團隊";
+
+    List<string> rootModule = new List<string>()
+{
+        "倉庫管理","團隊管理"
+    };
+    Dictionary<string, List<string>> moduleMap = new Dictionary<string, List<string>>()
+{
+        { "倉庫管理" , new List<string>(){"調撥單","料號管理","庫存查詢"}},
+        { "團隊管理" , new List<string>(){"團隊資料","人員管理","形象網頁"}}
+    };
+
+    //var modules = Model.GetModule();
+    //var rootModule = modules.Where(m => m.ParentUid == null);
+    //var functionalModule = modules.Where(m => m.ParentUid != null);
+}
+
+<partial name="_Slide" model="rootModule" />
+
+<div style="height:60px;">&nbsp;</div>
+<div class="base-container">
+    <div class="function-btn-container">
+        <div id="functionBlock1" class="in-block-three function-block"></div>
+        <div id="functionBlock2" class="in-block-three function-block"></div>
+        <div id="functionBlock3" class="in-block-three function-block"></div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        $(function () {
+            initialSlide();
+            setFunctionBlock($('.slide-item').eq(0).text());
+            function initialSlide() {
+                $('.slide-item').eq(0).show();
+                $('.slide-circle').eq(0).addClass('active');
+            }
+
+            $(document).on('click', '.preview-block', function () {
+                playSlide(false);
+            } )
+
+            $(document).on('click', '.next-block', function () {
+                playSlide(true);
+            })
+
+            function playSlide(next) {
+                var activeIndex = getActiveItemIndex();
+                var totalItem = $('.slide-item').length;
+                var isLastItem = (activeIndex == (totalItem-1));
+                var isFirstItem = (activeIndex == 0);
+                $('.slide-item').hide();
+                $('.slide-circle').removeClass('active');
+                if (next) {
+                    if (isLastItem) {
+                        $('.slide-item').eq(0).show();
+                        $('.slide-circle').eq(0).addClass('active');
+                    }
+                    else {
+                        $('.slide-item').eq(activeIndex + 1).show();
+                        $('.slide-circle').eq(activeIndex + 1).addClass('active');
+                    }
+                }
+                else {
+                    if (isFirstItem) {
+                        $('.slide-item').eq(totalItem - 1).show();
+                        $('.slide-circle').eq(totalItem - 1).addClass('active');
+
+                    }
+                    else {
+                        $('.slide-item').eq(activeIndex - 1).show();
+                        $('.slide-circle').eq(activeIndex - 1).addClass('active');
+                    }
+                }
+                setFunctionBlock($('.slide-item[style*="display: block"]').text());
+
+                function getActiveItemIndex() {
+                    return $('.slide-item[style*="display: block"]').index('.slide-item');
+                }
+            }
+
+            function setFunctionBlock(key) {
+                var $funcBlocks = $('.function-block');
+                var functionList = getFunctionList(key);
+                for (var i = 0; i < $funcBlocks.length; i++) {
+                    var $thisBlock = $funcBlocks.eq(i);
+                    $thisBlock.text(functionList[i]);
+                }
+
+                function getFunctionList(key) {
+                    var result = [];
+                    var map =
+                        [
+                            { "倉庫管理": ["調撥單", "料號管理", "庫存查詢"] },
+                            { "團隊管理": ["團隊資訊", "人員管理", "形象網頁"] }
+                        ];
+                    for (var i = 0; i < map.length; i++) {
+                        if (Object.keys(map[i]) == key) {
+                            result = map[i][key];
+                            return result;
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+}

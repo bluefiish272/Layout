@@ -1,0 +1,164 @@
+﻿@model ValueTuple<List<Layout>, List<SelectListItem>, Dictionary<string, string>>
+@{
+    ViewData["Title"] = "形象網頁設定";
+    var (layouts, layoutTempletes, formats) = Model;
+    var location = layouts.FirstOrDefault()?.Location;
+    var locations = new List<SelectListItem>()
+    {
+        new SelectListItem() { Text = "首頁", Value = "Index" },
+        new SelectListItem() { Text = "公司介紹", Value = "Introduction" },
+        new SelectListItem() { Text = "產品", Value = "Product" },
+        new SelectListItem() { Text = "聯絡頁", Value = "Contact" },
+    };
+}
+
+<h2 class="text-center">版面配置設定</h2>
+<hr />
+
+<form id="webSetiingForm" class="setting-form base-form-border" asp-action="SetWebSetting">
+    <div>
+        您可以設定自己的形象網頁版面，請依序選擇想要的版面設定。
+    </div>
+    <div class="row">
+        <div class="col-4">頁面類型</div>
+        <div class="col-8">
+            <select class="form-control rename-item" id="location" name="location" asp-items="@locations" asp-for="@location"></select>
+        </div>
+    </div>
+    <div class="text-center" style="margin:10px auto;">
+        <button type="button" class="btn btn-success" id="addBlockBtn">新增區塊</button>
+    </div>
+    <div id="layoutSettings">
+        @foreach (var item in layouts)
+                {
+                    formats.TryGetValue(item.Template, out var format);
+            <div class="setting-block row" style="margin:10px auto;border-top:dashed 0.5px;">
+                <div class="col-2 setting-sequence"></div>
+                <div class="col-8">
+                    <div class="row" style="border-bottom:solid 1px dashed;">
+                        <div class="col-4">版面</div>
+                        <div class="col-8">
+                            <select class="form-control rename-item setting-template" id="Layouts[#].Template" name="Layouts[#].Template" asp-items="@layoutTempletes" asp-for="@item.Template"></select>
+                        </div>
+                    </div>
+                    <div class="row" style="border-bottom:solid 1px dashed;">
+                        <div class="col-4">參考範例</div>
+                        <div class="col-8">
+                            <textarea class="form-control-plaintext setting-format" rows="4" readonly>@format</textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">內容</div>
+                        <div class="col-8">
+                            <textarea class="form-control rename-item" id="Layouts[#].Content" name="Layouts[#].Content" rows="4" placeholder="請參照「參考範例」的格式進行設定。">@item.Content</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <a class="btn btn-danger remove-form-group">X</a>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="text-center">
+        <button type="button" class="btn btn-success" id="webSettingSubmit">送出</button>
+        <a type="button" class="btn btn-primary" href="@Url.Action("Index","Setting")">返回</a>
+    </div>
+</form>
+
+
+<div id="template" style="display:none;">
+    <div class="setting-block row" style="margin:10px auto;border-top:dashed 0.5px;">
+        <div class="col-2 setting-sequence"></div>
+        <div class="col-8">
+            <div class="row" style="border-bottom:solid 1px dashed;">
+                <div class="col-4">版面</div>
+                <div class="col-8">
+                    <select class="form-control rename-item setting-template" id="Layouts[#].Template" name="Layouts[#].Template" asp-items="@layoutTempletes"></select>
+                </div>
+            </div>
+            <div class="row" style="border-bottom:solid 1px dashed;">
+                <div class="col-4">參考範例</div>
+                <div class="col-8">
+                    <textarea class="form-control-plaintext setting-format" rows="4" readonly></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">內容</div>
+                <div class="col-8">
+                    <textarea class="form-control rename-item" id="Layouts[#].Content" name="Layouts[#].Content" rows="4" placeholder="請參照「參考範例」的格式進行設定。"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-1">
+            <a class="btn btn-danger remove-form-group">X</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    $(function () {
+        setSequence();
+        $(document).on('click', '#addBlockBtn', function () {
+            var clone = $('#template').find('.setting-block').clone();
+            $('#layoutSettings').append(clone);
+            setSequence();
+        })
+
+        $(document).on('click', '.remove-form-group', function () {
+            var target = $(this).parents('.setting-block');
+            target.remove();
+            setSequence();
+        })
+
+        $(document).on('click', '#webSettingSubmit', function () {
+            rename();
+            $('#webSetiingForm').submit();
+        })
+
+        $(document).on('change', '.setting-template', function () {
+            var template = $(this).val();
+            if (template) {
+                getContentFormat($(this), template);
+            }
+        })
+
+        
+        function setSequence() {
+            var form = $('#webSetiingForm');
+            var settingBlock = form.find('.setting-block');
+            for (var i = 0; i < settingBlock.length; i++) {
+                var sequence = settingBlock.eq(i).find('.setting-sequence');
+                sequence.html('第' + (i + 1) + '區塊');
+            }
+        }
+
+        function rename() {
+            var blocks = $('#webSetiingForm').find('.setting-block');
+            for (var i = 0; i < blocks.length; i++) {
+                var items = blocks.eq(i).find('.rename-item');
+
+                for (var j = 0; j < items.length; j++) {
+                    var newName = items.eq(j).attr('name').replace('#', i);
+                    items.eq(j).attr('name', newName);
+                    var newId = items.eq(j).attr('id').replace('#', i);
+                    items.eq(j).attr('id', newId);
+                }
+            }
+        }
+
+        function getContentFormat(element, template) {
+            var target = $(element).parents('.setting-block').find('.setting-format');
+            target.html('');
+            $.ajax({
+                data: { template: template },
+                url: '@Url.Action("GetContentFormat", "Setting")',
+                success: function (format) {
+                    target.html(format);
+                }
+            })
+        }
+    })
+</script>
+}

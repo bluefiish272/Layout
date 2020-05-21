@@ -1,0 +1,17 @@
+﻿@model TemplateMap
+@{
+    Layout = null;
+}
+
+<div class="base-container">
+    <div class="in-block-two">
+        <div class="text-block padding-left-20">
+            @Model.Text
+        </div>
+    </div>
+    <div class="in-block-two">
+        <div class="img-block padding-right-20" style="height: 100%;">
+            <img src="@Url.Content(Model.ImagePath)" />
+        </div>
+    </div>
+</div>

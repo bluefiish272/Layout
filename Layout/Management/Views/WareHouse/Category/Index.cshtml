@@ -1,0 +1,31 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "類別";
+}
+
+<h2 class="text-center">料件類別</h2>
+<hr />
+<div id="categoriesList" class="container">
+    <div class="row text-center">
+        <div class="col-2 border-right border-left">Code</div>
+        <div class="col-2 border-right">名稱</div>
+        <div class="col-6 border-right">描述</div>
+        <div class="col-2 border-right">編輯</div>
+    </div>
+    @foreach (var category in Model)
+    {
+        <div class="row" style="background-color:lightblue;">
+            <div class="col-2 border-right border-left">@category.Code</div>
+            <div class="col-2 border-right">@category.Name</div>
+            <div class="col-6 border-right">@category.Description</div>
+            <div class="col-2 border-right text-center">
+                <a class="btn btn-primary" href="@Url.Action("Edit","Category",new { uid = category.UID})">編輯</a>
+            </div>
+        </div>
+    }
+
+    <div class="text-left">
+        <a class="btn btn-success" href="@Url.Action("Create","Category")">新增類別</a>
+    </div>
+</div>
+

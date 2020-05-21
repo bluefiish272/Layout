@@ -1,0 +1,22 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="navbar-container fixed-top">
+    <div class="nav-block">
+        <div class="nav-brand-block">
+            <a class="navbar-brand-link" asp-area="" asp-controller="Home" asp-action="Index">
+                <img class="nav-brand-icon" src="@Url.Content("~/image/Logo.png")" />
+            </a>
+        </div>
+        <div class="nav-item-list" id="navbarList">
+            
+        </div>
+        <div id="navUser" class="nav-user">
+            @if (!string.IsNullOrEmpty(ViewData["MemberName"]?.ToString()))
+            {
+                @($"{ViewData["MemberName"]} 您好")
+            }
+        </div>
+    </div>
+</div>

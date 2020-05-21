@@ -1,0 +1,86 @@
+﻿@model Material
+@{
+    ViewData["Title"] = "編輯料件";
+    var categories = Core.Helper.FakeDataHelper.GetCategories();
+    var selectLists = new List<SelectListItem>();
+    foreach (var item in categories)
+    {
+        var SelectListItem = new SelectListItem()
+        {
+            Text = $"{item.Code}-{item.Name}",
+            Value = item.UID.ToString()
+        };
+        selectLists.Add(SelectListItem);
+    }
+}
+
+    <form id="materialsEditForm" class="warehouse-form base-form-border" asp-action="Update">
+        <div class="text-center">料件資訊</div>
+        <hr />
+        <div class="form-group row">
+            <label for="categoryCode" class="col-3 col-form-label text-center">UID</label>
+            <div class="col-8">
+                <input type="text" class="form-control-plaintext" readonly id="Material.UID" name="Material.UID" value="@Model.UID">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="categoryCode" class="col-3 col-form-label text-center">類別</label>
+            <div class="col-8">
+                <select class="form-control" id="Material.CategoryUid" name="Material.CategoryUid" asp-items="@selectLists" asp-for="@Model.CategoryUid"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="materialProperty" class="col-3 col-form-label text-center">屬性</label>
+            <div class="col-8">
+                @foreach (var p in System.Enum.GetValues(typeof(Property)))
+                {
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" name="Material.Property" id="@($"property{(int)p}")" value="@((int)p)" checked="@((Property)p == Model.Property)">
+                        <label class="form-check-label" for="propertyRadio1">@EnumsHelper.GetName((Property)p)</label>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="materialNumber" class="col-3 col-form-label text-center">料號</label>
+            <div class="col-8">
+                <input type="text" class="form-control" id="Material.Name" name="Material.Number" asp-for="@Model.Number">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="materialName" class="col-3 col-form-label text-center">名稱</label>
+            <div class="col-8">
+                <input type="text" class="form-control" id="Material.Name" name="Material.Name" asp-for="@Model.Name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="materialSpecification" class="col-3 col-form-label text-center">規格</label>
+            <div class="col-8">
+                <input type="text" class="form-control" id="Material.Specification" name="Material.Specification" asp-for="@Model.Specification">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="materialDescription" class="col-3 col-form-label text-center">描述</label>
+            <textarea class="form-control col-8" id="Material.Description" name="Material.Description" rows="1">@Model.Description</textarea>
+        </div>
+        <div class="form-group row">
+            <label for="categoryCode" class="col-3 col-form-label text-center">建立人員</label>
+            <div class="col-8">@Model.Creator</div>
+        </div>
+        <div class="form-group row">
+            <label for="categoryCode" class="col-3 col-form-label text-center">建立日期</label>
+            <div class="col-8">@Model.CreateDate.ToString("yyyy-MM-dd")</div>
+        </div>
+        <div class="form-group row">
+            <label for="categoryCode" class="col-3 col-form-label text-center">最後更新人員</label>
+            <div class="col-8">@Model.LastUpdator</div>
+        </div>
+        <div class="form-group row">
+            <label for="categoryCode" class="col-3 col-form-label text-center">最後更新日期</label>
+            <div class="col-8">@Model.LastUpdateDate.ToString("yyyy-MM-dd")</div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">更新</button>
+            <a class="btn btn-primary" href="@Url.Action("Index","Category")">返回</a>
+        </div>
+    </form>

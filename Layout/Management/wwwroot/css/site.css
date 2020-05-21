@@ -1,0 +1,451 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+    font-family: Arial,"微軟正黑體","Microsoft JhengHei","新細明體", sans-serif;
+    font-size: 14px;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    font-family: Arial,"微軟正黑體","Microsoft JhengHei","新細明體", sans-serif;
+    font-size: 14px;
+}
+
+.m-bottom-10{
+    margin-bottom:10px;
+}
+.m-bottom-20 {
+    margin-bottom: 20px;
+}
+.row-title {
+    background-color: #bfe9f2;
+    margin-bottom: 3px;
+}
+.col-border {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #a6abab;
+}
+
+.header-top {
+    position: static;
+    height: 90px;
+}
+
+.header-bottom {
+    position: static;
+    height: 20px;
+}
+
+header .navbar-container {
+    position: fixed;
+    right: 0;
+    left: 0;
+    height: 100px;
+    border-bottom: solid 2.5px #4d4d4d;
+    background-color: #ffffff;
+}
+
+header .nav-block {
+    height: 100%;
+    margin: 0 15%;
+    padding-top: 45px;
+}
+
+.nav-brand-block {
+    display: inline-block;
+    width: 15%;
+}
+
+.navbar-container .nav-brand-icon {
+    height: 50px;
+}
+
+.nav-item-list {
+    display: inline-block;
+    width: 75%;
+}
+
+.nav-user {
+    display: inline-block;
+    width: 8%;
+    word-break: keep-all;
+}
+/*覆寫bootstrap*/
+.navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: solid 1.5px #aba7a7;
+    border-radius: 0.25rem;
+}
+
+.navbar-light .navbar-toggler {
+    color: rgba(0, 0, 0, 0.5);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+/*覆寫bootstrap*/
+
+/*覆寫bootstrap-grid system*/
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
+.col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm,
+.col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
+.col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg,
+.col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl,
+.col-xl-auto {
+    padding-right: 0;
+    padding-left: 0;
+}
+/*覆寫bootstrap-grid system*/
+
+.slide-container {
+    margin: 0 auto;
+    width: 100%;
+    height: 110px;
+}
+.slide-top {
+    height: 110px;
+    /*border-style: solid;
+    border-width: 1px;
+    border-color: dodgerblue;*/
+}
+
+.slide-content {
+    display: inline-block;
+    width: 100%;
+    height: 110px;
+    margin: 0 auto;
+    padding:35px 0;
+    color:white;
+    font-size:22px;
+    font-weight:700;
+    /*border-style: solid;
+    border-width: 1px;
+    border-color: orangered;*/
+}
+.slide-item {
+    display: none;
+    width: 100%;
+    height: 110px;
+    margin: 0 auto;
+    /*border-style: solid;
+    border-width: 1px;
+    border-color: orangered;*/
+}
+
+.slide-arrow {
+    position: relative;
+    z-index: 10;
+    width: 5%;
+    height: 110px;
+    margin-top: -130px;
+    text-align: center;
+    /*border-style: dotted;
+    border-width: 2px;
+    border-color: orange;*/
+}
+.preview-block {
+    float:left;
+}
+
+.next-block {
+    float: right;
+}
+.arrow-icon {
+    margin: 47px auto;
+    width: 15px;
+}
+.slide-bottom {
+    height: 20px;
+    /*border-style: solid;
+    border-width: 1px;
+    border-color: forestgreen;*/
+}
+.slide-circle{
+    color:black;
+}
+.slide-circle.active {
+    color: green;
+}
+.function-btn-container{
+    margin: 0 20%
+}
+.function-block {
+    display: inline-block;
+    margin: 0.25% 1%;
+    width: 30%;
+    height: 60px;
+    background-color:lightblue;
+    color:darkblue;
+    text-align: center;
+    font-size:20px;
+    font-weight:600;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: darkgreen;
+}
+
+.base-container {
+    margin: 10px auto;
+    width: 100%;
+    height: 500px;
+}
+.news-container {
+    margin: 10px 20%;
+    height: 45px;
+    /*background-color: lightsalmon;*/
+}
+
+.news-item {
+    background-color: lightsteelblue;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+    .news-item a {
+        line-height: 45px;
+    }
+
+.teams-container {
+    margin: 10px 20%;
+    height: 35px;
+    /*background-color: lightsalmon;*/
+}
+.team-item{
+    background-color:lavenderblush;
+    margin-bottom: 10px;
+    /*display:inline-block; 先用bootstrap-grid處理 class=row*/ 
+}
+
+.team-icon{
+    display:inline-block;
+    width:15%
+}
+.team-info {
+    display: inline-block;
+    width:80%;
+}
+    .team-info .team-name {
+        font-weight:600;
+        color: crimson;
+    }
+.team-icon img {
+    height: 60px;
+}
+
+.base-form-border {
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 6px;
+}
+
+#loginForm {
+    margin: 15px 30%;
+    padding: 10px 10px;
+}
+#signUpForm,
+#addTeamForm,
+.warehouse-form,
+.setting-form {
+    margin: 15px 20%;
+    padding: 10px 10px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+    background-color: #ffffff;
+}
+
+.function-container {
+    margin: 0 30%;
+    text-align: center;
+}
+.func-item {
+    display: inline-block;
+    width:19.2%;
+    text-align:center;
+    border-style: solid;
+    border-color: darkgreen;
+    border-width: 1.5px;
+    border-radius: 6px;
+}
+
+    .func-item:hover {
+        background-color: darkgreen;
+    }
+    .func-item a {
+        color: darkslategrey;
+        width: 100%;
+        line-height:50px;
+    }
+    .func-item a:hover {
+        color : white;
+        font-weight:600;
+    }
+    /*.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; 
+}*/
+    @media screen and (max-width:1024px) {
+        .function-block {
+            margin: 0.25% 1.5%;
+            width: 30%;
+            height: 41%;
+        }
+    }
+
+@media screen and (max-width:812px) {
+    .header-top {
+        height: 50px;
+    }
+    .header-bottom {
+        height: 10px;
+    }
+    header .navbar-container {
+        height: 55px;
+    }
+    header .nav-block {
+        height: 100%;
+        margin: 0 10%;
+        padding-top: 10px;
+    }
+    .nav-brand-block {
+        width: 15%;
+    }
+    .navbar-container .nav-brand-icon {
+        height: 40px;
+    }
+    .nav-item-list {
+        width: 63%;
+    }
+    .nav-user {
+        width: 20%;
+    }
+    .function-btn-container {
+        margin: 0 10%
+    }
+    .function-block {
+        margin: 0.25% 1%;
+        width: 30%;
+        height: 41%;
+    }
+}
+
+@media screen and (max-width:736px) {
+    body {
+        font-size: 12px;
+    }
+    #loginForm,
+    #signUpForm,
+    #addTeamForm,
+    .warehouse-form,
+    .setting-form {
+        margin: 0 13%;
+    }
+    .teams-container,
+    .news-container {
+        margin: 10px auto;
+    }
+}
+
+@media screen and (max-width:414px) {
+    body {
+        font-size: 11px;
+    }
+    header .nav-block {
+        height: 100%;
+        margin: 0 3%;
+        padding-top: 10px;
+    }
+    #loginForm,
+    #signUpForm,
+    #addTeamForm,
+    .warehouse-form,
+    .setting-form {
+        margin: 0 5%;
+    }
+ 
+    .function-container {
+        margin: 0 auto;
+    }
+    .function-btn-container {
+        margin: 0 2%
+    }
+    .function-block {
+        margin: 0.25% 1%;
+        width: 47%;
+        height: 41%;
+    }
+}

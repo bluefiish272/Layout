@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="modal fade" id="addTeamView" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="addTeamForm" class="base-form-border" asp-controller="Teams" asp-action="AddTeam">
+                <div class="text-center">請輸入團隊的代碼</div>
+                <hr />
+                <div class="form-group row">
+                    <label for="addTeamUid" class="col-3 col-form-label text-center">Code</label>
+                    <div class="col-8">
+                        <input type="text" class="form-control" id="teamUid" name="teamUid">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success">加入</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

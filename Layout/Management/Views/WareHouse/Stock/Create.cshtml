@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "新增庫存";
+}
+
+    <form id="stockCreateForm" class="warehouse-form base-form-border" asp-action="Add">
+        <div class="text-center">庫存資訊</div>
+        <hr />
+        <div class="form-group row">
+            <label for="categoryCode" class="col-3 col-form-label text-center">類別</label>
+            <div class="col-8">
+                <input type="text" class="form-control" id="Stock.Category" name="Stock.Category">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="stockName" class="col-3 col-form-label text-center">品名</label>
+            <div class="col-8">
+                <input type="text" class="form-control" id="Stock.Name" name="Stock.Name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="stockNumber" class="col-3 col-form-label text-center">料號</label>
+            <div class="col-8">
+                <input type="text" class="form-control" id="Stock.Number" name="Stock.Number">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="stockSpecification" class="col-3 col-form-label text-center">規格</label>
+            <div class="col-8">
+                <input type="text" class="form-control" id="Stock.Specification" name="Stock.Specification">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="stockLocation" class="col-3 col-form-label text-center">所在地</label>
+            <div class="col-8">
+                <input type="text" class="form-control" id="Stock.Location" name="Stock.Location">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="stockDescription" class="col-3 col-form-label text-center">描述</label>
+            <textarea class="form-control col-8" id="Stock.Description" name="Stock.Description" rows="1"></textarea>
+        </div>
+        <div class="form-group row">
+            <label for="stockLocation" class="col-3 col-form-label text-center">數量</label>
+            <div class="col-8">
+                <input type="number" class="form-control" id="Stock.Quantity" name="Stock.Quantity">
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">建立</button>
+            <a class="btn btn-primary" href="@Url.Action("Index","Stock")">返回</a>
+        </div>
+    </form>

@@ -1,0 +1,70 @@
+﻿@model List<StockViewModel>
+@{
+    ViewData["Title"] = "庫存管理";
+    var map = Model.GroupBy(m => m.Category).ToDictionary(g => g.Key, g=>g.ToList());
+}
+
+<h2 class="text-center">庫存管理</h2>
+<hr style="width:80%;"/>
+<div id="stockList" class="container">
+    <div class="text-left m-bottom-20">
+        <a class="btn btn-success" href="@Url.Action("Create","Stock")">新增庫存</a>
+    </div>
+    @foreach (var item in map)
+        {
+            var category = item.Key;
+            var stocks = item.Value;
+            var uid = Guid.NewGuid();
+    <div class="row m-bottom-10">
+        <div class="stock-category col-12">
+            <button type="button" class="col-3 btn btn-outline-info js-stock-detail" data-open-target="@uid">@category</button>
+        </div>
+    </div>
+    <div id="@uid" class="stock-detail  m-bottom-20">
+        <div class="row col-12 row-title text-center font-weight-bold">
+            <div class="col col-border">料號</div>
+            <div class="col col-border">品名</div>
+            <div class="col col-border">規格</div>
+            <div class="col col-border">所在地</div>
+            <div class="col col-border">數量</div>
+            <div class="col col-border">備註</div>
+            <div class="col col-border">編輯</div>
+
+        </div>
+        @foreach (var stock in stocks)
+        {
+    <div class="row col-12" style="margin-bottom:1.5px;">
+        <div class="col border">@stock.Number</div>
+        <div class="col border">@stock.Name</div>
+        <div class="col border">@stock.Specification</div>
+        <div class="col border">@stock.Location</div>
+        <div class="col border">@stock.Quantity</div>
+        <div class="col border">@stock.Description</div>
+        <div class="col border text-center">
+            <a class="btn btn-primary" href="@Url.Action("Edit","Stock",new{id = stock.ID})">編輯</a>
+        </div>
+    </div>
+        }
+    </div>
+        }
+
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            $('.stock-detail').hide();
+
+            $('.js-stock-detail').click(function () {
+                var targetId = $(this).data('openTarget');
+                if ($('#' + targetId + ':hidden').length) {
+                    $('.stock-detail').hide();
+                    $('#' + targetId).show();
+                }
+                else {
+                    $('#' + targetId).hide();
+                }
+            })
+        })
+    </script>
+}

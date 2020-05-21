@@ -1,0 +1,43 @@
+﻿@model List<Tabs>
+@{
+    ViewData["Title"] = "頁籤";
+}
+
+    <div class="tabs-container">
+        <div class="left-tab-row">
+            <div class="left-tab-title">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    @{
+                        int index = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        <a class="nav-link" id="@($"v-{index}-tab")" data-toggle="pill" href="@($"#v-pills-{index}")" role="tab" aria-controls="@($"v-pills-{index}")home" aria-selected="false">@item.Title</a>
+                        index++;
+                    }
+                </div>
+            </div>
+            <div class="left-tab-content">
+                <div class="tab-content" id="v-pills-tabContent">
+                    @{
+                        int key = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        <div class="tab-pane fade" id="@($"v-pills-{key}")" role="tabpanel" aria-labelledby="@($"v-pills-{key}-tab")">
+                            <partial name="../Template/_Tabs" model="@item.Content" />
+                        </div>
+                        key++;
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            tabsInitial();
+        })
+    </script>
+}

@@ -1,0 +1,38 @@
+﻿@model List<Tabs>
+@{
+    ViewData["Title"] = "頁籤";
+}
+<div class="tabs-container">
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            @{
+                int index = 0;
+            }
+            @foreach (var item in Model)
+            {
+                <a class="nav-item nav-link" id="@($"nav-{index}-tab")" data-toggle="tab" href="@($"#nav-{index}")" role="tab" aria-controls="@($"nav-{index}")" aria-selected="false">@item.Title</a>
+                index++;
+            }
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        @{
+            int key = 0;
+        }
+        @foreach (var item in Model)
+        {
+            <div class="tab-pane fade" id="@($"nav-{key}")" role="tabpanel" aria-labelledby="@($"nav-{key}-tab")">
+                <partial name="../Template/_Tabs" model="@item.Content" />
+            </div>
+            key++;
+        }
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            tabsInitial();
+        })
+    </script>
+}

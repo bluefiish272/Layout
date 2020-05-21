@@ -1,0 +1,69 @@
+﻿
+@model List<StockViewModel>
+@{
+    ViewData["Title"] = "庫存管理";
+}
+
+<h2 class="text-center">庫存管理</h2>
+<hr />
+<div id="stockList" class="container">
+    <div class="row text-center">
+        <div class="col-4 border-right border-left">品名</div>
+        <div class="col-4 border-right">數量</div>
+        <div class="col-2">詳細資訊</div>
+        <div class="col-2">編輯</div>
+    </div>
+    @foreach (var stock in Model)
+        {
+    <div class="row">
+        <div class="row col-12 stock-simple" style="background-color:lightblue;">
+            <div class="col-4 border-right border-left">@stock.Name</div>
+            <div class="col-4 border-right">@stock.Quantity</div>
+            <div class="col-2 border-right text-center">
+                <button class="btn btn-primary js-stock-detail" data-open-target="@stock.ID">🔍</button>
+            </div>
+            <div class="col-2 border-right text-center">
+                <a class="btn btn-primary" href="@Url.Action("Edit","Stock",new { uid = stock.ID})">編輯</a>
+            </div>
+        </div>
+        <div class="row col-12 stock-detail" id="@($"stockId-{stock.ID}")">
+            <div class="row col-12" style="background-color:lightgray;">
+                <div class="col-2 border-right">類別</div>
+                <div class="col-2 border-right">料號</div>
+                <div class="col-2 border-right">規格</div>
+                <div class="col-2 border-right">所在地</div>
+                <div class="col-4 border-right">備註</div>
+            </div>
+            <div class="row col-12">
+                <div class="col-2 border-right">@stock.Category</div>
+                <div class="col-2 border-right">@stock.Number</div>
+                <div class="col-2 border-right">@stock.Specification</div>
+                <div class="col-2 border-right">@stock.Location</div>
+                <div class="col-4 border-right">@stock.Description</div>
+            </div>
+        </div>
+    </div>
+        }
+    <div class="text-left">
+        <a class="btn btn-success" href="@Url.Action("Create","Stock")">新增庫存</a>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            $('.stock-detail').hide();
+
+            $('.js-stock-detail').click(function () {
+                var targetId = $(this).data('openTarget');
+                if ($('#stockId-' + targetId + ':hidden').length) {
+                    $('.stock-detail').hide();
+                    $('#stockId-' + targetId).show();
+                }
+                else {
+                    $('#stockId-' + targetId).hide();
+                }
+            })
+        })
+    </script>
+}

@@ -1,0 +1,48 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="navbar-container fixed-top">
+    <div class="nav-block">
+        <div class="nav-brand-block">
+            <a class="navbar-brand-link" asp-area="" asp-controller="Home" asp-action="Index">
+                <img class="nav-brand-icon" src="@Url.Content("~/image/LogoAndBrand.png")" />
+            </a>
+        </div>
+        <div class="nav-item-list" id="navbarList">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Introduction">Introduction</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-dark dropdown-toggle" asp-area="" id="navTabsSelect" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Tabs</a>
+                    <div class="dropdown-menu" aria-labelledby="navTabsSelect">
+                        <a class="dropdown-item" href="@Url.Action("Tabs","Home", new { type = "top"})">TopTabs</a>
+                        <a class="dropdown-item" href="@Url.Action("Tabs","Home", new { type = "left"})">LeftTabs</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-dark dropdown-toggle" asp-area="" id="navProductSelect" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Products</a>
+                    <div class="dropdown-menu" aria-labelledby="navProductSelect">
+                        <a class="dropdown-item" href="@Url.Action("Index","Product", new { category = "A"})">A</a>
+                        <a class="dropdown-item" href="@Url.Action("Index","Product", new { category = "B"})">B</a>
+                        <a class="dropdown-item" href="@Url.Action("Index","Product", new { category = "C"})">C</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="@Url.Action("Index","Product")">Total</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Accordion">Accordion</a>
+                </li>
+            </ul>
+        </div>
+        <div id="navMenuBtn" class="nav-menu-btn">
+            <button class="navbar-toggler navbar-light">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</div>

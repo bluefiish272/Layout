@@ -1,0 +1,9 @@
+﻿@model List<TemplateMap>
+@{
+    ViewData["Title"] = "Introduction";
+}
+
+@foreach (var item in Model)
+{
+	<partial name="@item.PartialViewName" model="item" />
+}

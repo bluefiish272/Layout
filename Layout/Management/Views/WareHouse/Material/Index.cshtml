@@ -1,0 +1,34 @@
+﻿@model ValueTuple<List<Material>, Dictionary<Guid, string>>
+@{
+    ViewData["Title"] = "料件管理";
+    var (materials, categoryMap) = Model;
+}
+
+    <h2 class="text-center">料件管理</h2>
+    <hr />
+    <div id="materialList" class="container">
+        <div class="row text-center">
+            <div class="col-2 border-right border-left">類別</div>
+            <div class="col-2 border-right">料號</div>
+            <div class="col-2 border-right">名稱</div>
+            <div class="col-4 border-right">描述</div>
+            <div class="col-2 border-right">編輯</div>
+        </div>
+        @foreach (var material in materials)
+        {
+    <div class="row" style="background-color:lightblue;">
+        <div class="col-2 border-right border-left">@categoryMap[material.CategoryUid]</div>
+        <div class="col-2 border-right">@material.Number</div>
+        <div class="col-2 border-right">@material.Name</div>
+        <div class="col-4 border-right">@material.Description</div>
+        <div class="col-2 border-right text-center">
+            <a class="btn btn-primary" href="@Url.Action("Edit","Material",new { uid = material.UID})">編輯</a>
+        </div>
+    </div>
+        }
+
+        <div class="text-left">
+            <a class="btn btn-success" href="@Url.Action("Create","Material")">新增料件</a>
+        </div>
+    </div>
+

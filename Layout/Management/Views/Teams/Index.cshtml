@@ -1,0 +1,30 @@
+﻿@model List<Team>
+@{
+    ViewData["Title"] = "團隊";
+}
+
+<div class="base-container">
+    <div class="teams-container">
+        @if (Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <div class="team-item">
+                    <div class="team-icon">
+                        <img src="~/image/Logo.png" />
+                    </div>
+                    <div class="team-info">
+                        <a href="@Url.Action("Team","Teams", new { Id = item.Id})">
+                            <div class="team-name"> @item.Name</div>
+                            <div class="team-description"> @item.Description</div>
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <partial name="_NoTeams" />
+        }
+    </div>
+</div>
